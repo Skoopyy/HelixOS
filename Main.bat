@@ -451,7 +451,7 @@ REG ADD HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\ /v Hostname /t 
 REG ADD HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\ /v "NV Hostname" /t REG_SZ /d HelixOS /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Manufacturer" /t REG_SZ /d "Skoopyy" /f >nul
 cls
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Model" /t REG_SZ /d "HelixOS v2" /f >nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Model" /t REG_SZ /d "HelixOS v2.1.2" /f >nul
 cls
 echo During the installation process, DO NOT CLOSE THIS WINDOW. 100
 taskkill /f /im HelixInstaller.exe

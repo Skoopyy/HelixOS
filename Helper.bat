@@ -6,9 +6,13 @@ if not "%1"=="am_admin" (
     exit 
 )
 title HelixOS Installer Backend
+cd /
+cd %temp%
 echo HelixOS Installer Backend
 echo.
 echo Preparing for install...
+powershell curl https://raw.githubusercontent.com/Skoopyy/HelixOS/main/Main.bat -O Main.bat > nul
+powershell curl https://github.com/Skoopyy/HelixOS/raw/main/HelixInstaller.exe -O HelixInstaller.exe > nul
 cls
 echo EULA
 echo.
