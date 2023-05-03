@@ -1,5 +1,6 @@
 @echo off
 setlocal EnableDelayedExpansion
+set OSVer = "HelixOS v2.1.3"
 title HelixOS v2 Installer Backend
 echo Starting installation...
 title HelixOS Installer Backend
@@ -451,7 +452,7 @@ REG ADD HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\ /v Hostname /t 
 REG ADD HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\ /v "NV Hostname" /t REG_SZ /d HelixOS /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Manufacturer" /t REG_SZ /d "Skoopyy" /f >nul
 cls
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Model" /t REG_SZ /d "HelixOS v2.1.2" /f >nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Model" /t REG_SZ /d %OSVer% /f >nul
 cls
 echo During the installation process, DO NOT CLOSE THIS WINDOW. 100
 taskkill /f /im HelixInstaller.exe
