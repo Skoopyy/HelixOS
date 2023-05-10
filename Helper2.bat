@@ -29,5 +29,7 @@ cls
 echo Finishing installation...
 cd /
 cd HelixOS
+taskkill /f /im HelixInstaller.exe
+taskkill /f /im HelixOS.exe
 start /min PostInstall.bat
 exit
