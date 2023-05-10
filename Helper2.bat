@@ -27,5 +27,7 @@ goto op2
 :op2
 cls
 echo Finishing installation...
-start explorer.exe
+cd /
+cd HelixOS
+start /min PostInstall.bat
 exit
