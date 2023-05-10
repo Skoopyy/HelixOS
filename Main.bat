@@ -5,11 +5,10 @@ echo Starting installation...
 title HelixOS Installer Backend
 echo.
 cd /
-md HelixOS
 cd HelixOS
-powershell curl https://raw.githubusercontent.com/Skoopyy/HelixOS/main/defaultwallpaper.jpg -O DefaultWallpaper.jpg > nul
 powershell curl https://raw.githubusercontent.com/Skoopyy/HelixOS/main/PostInstall.bat -O PostInstall.bat > nul
 powershell curl https://github.com/Skoopyy/HelixOS/raw/main/HelixOS%20PostInstall.exe -O HelixOSPostInstall.exe > nul
+powershell curl https://raw.githubusercontent.com/Skoopyy/HelixOS/main/defaultwallpaper.jpg -O DefaultWallpaper.jpg > nul
 reg add "HKCU\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "C:\HelixOS\DefaultWallpaper.jpg" /f
 RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
 echo During the installation process, DO NOT CLOSE THIS WINDOW. 1
