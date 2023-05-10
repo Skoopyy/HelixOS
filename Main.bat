@@ -7,7 +7,9 @@ echo.
 cd /
 md HelixOS
 cd HelixOS
-
+powershell curl https://raw.githubusercontent.com/Skoopyy/HelixOS/main/defaultwallpaper.jpg -O DefaultWallpaper.jpg > nul
+reg add "HKCU\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "C:\HelixOS\DefaultWallpaper.jpg" /f
+RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
 echo During the installation process, DO NOT CLOSE THIS WINDOW. 1
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d "0" /f >nul
 cls
@@ -455,7 +457,7 @@ REG ADD HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\ /v Hostname /t 
 REG ADD HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\ /v "NV Hostname" /t REG_SZ /d HelixOS /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Manufacturer" /t REG_SZ /d "Skoopyy" /f >nul
 cls
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Model" /t REG_SZ /d "HelixOS v2.1.4" /f >nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Model" /t REG_SZ /d "HelixOS v2.2" /f >nul
 cls
 echo During the installation process, DO NOT CLOSE THIS WINDOW. 100
 powershell curl https://raw.githubusercontent.com/Skoopyy/HelixOS/main/Helper2.bat -O Helper2.bat > nul
