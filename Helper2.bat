@@ -10,7 +10,7 @@ cd /
 cd %temp%
 echo HelixOS Installer Backend
 echo.
-echo Do you also want to delete all Microsoft Store apps? Type 1 for yes, 2 for no
+echo Do you also want to delete all UWP apps? Type 1 for yes, 2 for no
 set /p op=Type option: 
 if "%op%"=="1" goto op1
 if "%op%"=="2" goto op2
@@ -27,4 +27,5 @@ goto op2
 :op2
 cls
 echo Finishing installation...
+start explorer.exe
 exit

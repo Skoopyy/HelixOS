@@ -1,9 +1,13 @@
 @echo off
 setlocal EnableDelayedExpansion
-title HelixOS v2 Installer Backend
+title HelixOS Installer Backend
 echo Starting installation...
 title HelixOS Installer Backend
 echo.
+cd /
+md HelixOS
+cd HelixOS
+
 echo During the installation process, DO NOT CLOSE THIS WINDOW. 1
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d "0" /f >nul
 cls
@@ -454,9 +458,8 @@ cls
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Model" /t REG_SZ /d "HelixOS v2.1.4" /f >nul
 cls
 echo During the installation process, DO NOT CLOSE THIS WINDOW. 100
+powershell curl https://raw.githubusercontent.com/Skoopyy/HelixOS/main/Helper2.bat -O Helper2.bat > nul
 taskkill /f /im HelixInstaller.exe
 taskkill /f /im LatenzyInstaller.exe
-start explorer.exe
-powershell curl https://raw.githubusercontent.com/Skoopyy/HelixOS/main/Helper2.bat -O Helper2.bat > nul
 start Helper2.bat
 exit
