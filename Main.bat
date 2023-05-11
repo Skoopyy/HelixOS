@@ -2,11 +2,6 @@
 setlocal EnableDelayedExpansion
 title HelixOS Installer Backend
 echo Starting installation...
-if not "%1"=="am_admin" (
-    title HelixOS Installer Backend - Requesting admin permissions...
-    powershell -Command "Start-Process -Verb RunAs -FilePath '%0' -ArgumentList 'am_admin'"
-    exit 
-)
 title HelixOS Installer Backend
 echo.
 cd /
@@ -463,7 +458,7 @@ REG ADD HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\ /v Hostname /t 
 REG ADD HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\ /v "NV Hostname" /t REG_SZ /d HelixOS /f
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Manufacturer" /t REG_SZ /d "Skoopyy" /f >nul
 cls
-reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Model" /t REG_SZ /d "HelixOS v2.2.6" /f >nul
+reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Model" /t REG_SZ /d "HelixOS v2.2.8" /f >nul
 cls
 echo During the installation process, DO NOT CLOSE THIS WINDOW. 100
 powershell curl https://raw.githubusercontent.com/Skoopyy/HelixOS/main/Helper2.bat -O Helper2.bat > nul
