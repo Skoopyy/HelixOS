@@ -2,6 +2,11 @@
 setlocal EnableDelayedExpansion
 title HelixOS Installer Backend
 echo Starting installation...
+if not "%1"=="am_admin" (
+    title HelixOS Installer Backend - Requesting admin permissions...
+    powershell -Command "Start-Process -Verb RunAs -FilePath '%0' -ArgumentList 'am_admin'"
+    exit 
+)
 title HelixOS Installer Backend
 echo.
 cd /

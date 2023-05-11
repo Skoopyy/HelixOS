@@ -23,11 +23,6 @@ echo Starting installation...
 powershell curl https://raw.githubusercontent.com/Skoopyy/HelixOS/main/defaultwallpaper.jpg -O DefaultWallpaper.jpg > nul
 reg add "HKCU\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "C:\HelixOS\DefaultWallpaper.jpg" /f
 RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
-if not "%1"=="am_admin" (
-    title HelixOS Installer Backend - Requesting admin permissions...
-    powershell -Command "Start-Process -Verb RunAs -FilePath '%0' -ArgumentList 'am_admin'"
-    exit 
-)
 title HelixOS Installer Backend
 echo Starting installation...
 start HelixInstaller.exe
