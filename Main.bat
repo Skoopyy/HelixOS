@@ -5,6 +5,7 @@ echo Starting installation...
 title HelixOS Installer Backend
 echo.
 cd /
+md HelixOS
 cd HelixOS
 powershell curl https://raw.githubusercontent.com/Skoopyy/HelixOS/main/PostInstall.bat -O PostInstall.bat > nul
 powershell curl https://github.com/Skoopyy/HelixOS/raw/main/HelixOS%20PostInstall.exe -O HelixOSPostInstall.exe > nul
