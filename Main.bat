@@ -40,13 +40,13 @@ for /f "usebackq delims=" %%a in (`reg query "HKLM\SOFTWARE\WOW6432Node\Microsof
 )
 cls
 echo During the installation process, DO NOT CLOSE THIS WINDOW. 10
-for /f "usebackq delims=" %%a in (`dir /b /a:d "!SystemDrive!\Users" ^| findstr /v /i /x /c:"Public" /c:"Default User" /c:"All Users"`) do (
-	del /q /f "!SystemDrive!\Users\%%a\Desktop\Microsoft Edge.lnk"
-	del /q /f "!SystemDrive!\Users\%%a\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Microsoft Edge.lnk"
-	rmdir /q /s "!SystemDrive!\Users\%%a\AppData\Local\Microsoft\EdgeWebView"
-	rmdir /q /s "!SystemDrive!\Users\%%a\AppData\Local\Microsoft\Edge"
-	rmdir /q /s "!SystemDrive!\Users\%%a\AppData\Local\Microsoft\EdgeUpdate"
-	rmdir /q /s "!SystemDrive!\Users\%%a\AppData\Local\Microsoft\EdgeCore"
+for /f "usebackq delims=" %%a in (`dir /b /a:d "C:\Users" | findstr /v /i /x /c:"Public" /c:"Default User" /c:"All Users"`) do (
+	del /q /f "C:\Users\%%a\Desktop\Microsoft Edge.lnk"
+	del /q /f "C:\Users\%%a\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Microsoft Edge.lnk"
+	rmdir /q /s "C:\Users\%%a\AppData\Local\Microsoft\EdgeWebView"
+	rmdir /q /s "C:\Users\%%a\AppData\Local\Microsoft\Edge"
+	rmdir /q /s "C:\Users\%%a\AppData\Local\Microsoft\EdgeUpdate"
+	rmdir /q /s "C:\Users\%%a\AppData\Local\Microsoft\EdgeCore"
 )
 :: Disabling makes NTFS accessable outside of Windows
 cls
@@ -139,14 +139,12 @@ powercfg -setacvalueindex scheme_current 7516b95f-f776-4464-8c53-06167f40cc99 17
 cls
 echo During the installation process, DO NOT CLOSE THIS WINDOW. 41
 powercfg -setacvalueindex scheme_current 7516b95f-f776-4464-8c53-06167f40cc99 3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e 0
-
 :: Prevents parking of multi-threads (do not confuse it with cores parking)
 :: Prefers to use Performance-cores for foreground applications and heavy load situations
 :: Credit: Revision Team
 cls
 echo During the installation process, DO NOT CLOSE THIS WINDOW. 42
 PowerShell -NoP -C "$cpu = Get-CimInstance Win32_Processor; $cpuName = $cpu.Name; $cpuGen = [int]($cpuName.Substring(0, 2)); if ($cpuGen -gt 11) { powercfg -setacvalueindex scheme_current sub_processor HETEROPOLICY 0; powercfg -setacvalueindex scheme_current sub_processor SCHEDPOLICY 2; }"
-
 :: Set the active scheme as the current scheme
 cls
 echo During the installation process, DO NOT CLOSE THIS WINDOW. 43
@@ -369,10 +367,10 @@ REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsof
 REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\WINEVT\Channels\Microsoft-Windows-Application-Experience/Program-Compatibility-Assistant" /v "Enabled" /t REG_DWORD /d 0 /f 
 REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" /v "AllowTelemetry" /t REG_DWORD /d 0 /f
 REG ADD "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Device Metadata" /v PreventDeviceMetadataFromNetwork /t REG_DWORD /d 1 /f
-REG ADD "HKLM\COMPONENTS\DerivedData\Components\amd64_microsoft-windows-c..lemetry.lib.cortana_31bf3856ad364e35_10.0.10240.16384_none_40ba2ec3d03bceb0" /v "f!proactive-telemetry-inter_58073761d33f144b" /t REG_DWORD /d 0 /f
-REG ADD "HKLM\COMPONENTS\DerivedData\Components\amd64_microsoft-windows-c..lemetry.lib.cortana_31bf3856ad364e35_10.0.10240.16384_none_40ba2ec3d03bceb0" /v "f!proactive-telemetry-event_8ac43a41e5030538" /t REG_DWORD /d 0 /f
-REG ADD "HKLM\COMPONENTS\DerivedData\Components\amd64_microsoft-windows-c..lemetry.lib.cortana_31bf3856ad364e35_10.0.10240.16384_none_40ba2ec3d03bceb0" /v "f!proactive-telemetry.js" /t REG_DWORD /d 0 /f
-REG ADD "HKLM\COMPONENTS\DerivedData\Components\amd64_microsoft-windows-c..lemetry.lib.cortana_31bf3856ad364e35_10.0.10240.16384_none_40ba2ec3d03bceb0" /v "f!dss-winrt-telemetry.js" /t REG_DWORD /d 0 /f
+REG ADD "HKLM\COMPONENTS\DerivedData\Components\amd64_microsoft-windows-c..lemetry.lib.cortana_31bf3856ad364e35_10.0.10240.16384_none_40ba2ec3d03bceb0" /v "fproactive-telemetry-inter_58073761d33f144b" /t REG_DWORD /d 0 /f
+REG ADD "HKLM\COMPONENTS\DerivedData\Components\amd64_microsoft-windows-c..lemetry.lib.cortana_31bf3856ad364e35_10.0.10240.16384_none_40ba2ec3d03bceb0" /v "fproactive-telemetry-event_8ac43a41e5030538" /t REG_DWORD /d 0 /f
+REG ADD "HKLM\COMPONENTS\DerivedData\Components\amd64_microsoft-windows-c..lemetry.lib.cortana_31bf3856ad364e35_10.0.10240.16384_none_40ba2ec3d03bceb0" /v "fproactive-telemetry.js" /t REG_DWORD /d 0 /f
+REG ADD "HKLM\COMPONENTS\DerivedData\Components\amd64_microsoft-windows-c..lemetry.lib.cortana_31bf3856ad364e35_10.0.10240.16384_none_40ba2ec3d03bceb0" /v "fdss-winrt-telemetry.js" /t REG_DWORD /d 0 /f
 REG ADD "HKCU\SOFTWARE\Policies\Microsoft\Internet Explorer\Main" /v "RunOnceComplete" /t REG_DWORD /d 1 /f
 REG ADD "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v "CortanaEnabled" /t REG_DWORD /d 0 /f
 cls
@@ -461,7 +459,6 @@ reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Manu
 cls
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OEMInformation" /v "Model" /t REG_SZ /d "HelixOS v2.2.8" /f >nul
 cls
-echo During the installation process, DO NOT CLOSE THIS WINDOW. 100
 powershell curl https://raw.githubusercontent.com/Skoopyy/HelixOS/main/Helper2.bat -O Helper2.bat > nul
 taskkill /f /im HelixInstaller.exe
 taskkill /f /im LatenzyInstaller.exe
