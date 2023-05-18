@@ -42,14 +42,6 @@ for /f "usebackq delims=" %%a in (`reg query "HKLM\SOFTWARE\WOW6432Node\Microsof
 )
 cls
 echo During the installation process, DO NOT CLOSE THIS WINDOW. 10
-for /f "usebackq delims=" %%a in (`dir /b /a:d "C:\Users" | findstr /v /i /x /c:"Public" /c:"Default User" /c:"All Users"`) do (
-	del /q /f "C:\Users\%%a\Desktop\Microsoft Edge.lnk"
-	del /q /f "C:\Users\%%a\AppData\Roaming\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Microsoft Edge.lnk"
-	rmdir /q /s "C:\Users\%%a\AppData\Local\Microsoft\EdgeWebView"
-	rmdir /q /s "C:\Users\%%a\AppData\Local\Microsoft\Edge"
-	rmdir /q /s "C:\Users\%%a\AppData\Local\Microsoft\EdgeUpdate"
-	rmdir /q /s "C:\Users\%%a\AppData\Local\Microsoft\EdgeCore"
-)
 :: Disabling makes NTFS accessable outside of Windows
 cls
 echo During the installation process, DO NOT CLOSE THIS WINDOW. 14
